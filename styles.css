@@ -17,6 +17,7 @@ h1 {
   color: #a17ce6;
   font-size: 2.4rem;
   text-align: center;
+  cursor: pointer;
 }
 
 section {

@@ -3,11 +3,11 @@ const API_URL = "https://api.github.com/search/users?q=";
 const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
+const title = document.getElementById("title");
 
 async function getGitHubProfile(user) {
   const resp = await fetch(API_URL + user);
   const respData = await resp.json();
-  console.log(respData);
   main.innerHTML = "";
   respData.items.forEach((user) => {
     createUserCard(user);
@@ -16,7 +16,6 @@ async function getGitHubProfile(user) {
 
 function createUserCard(user) {
   const { html_url, avatar_url, login } = user;
-  console.log(user);
   const card = document.createElement("div");
   card.classList.add("card");
   card.innerHTML = `<div class="img-container">
@@ -39,4 +38,9 @@ form.addEventListener("submit", (e) => {
   const user = search.value;
 
   getGitHubProfile(user);
+});
+
+title.addEventListener("click", () => {
+  main.innerHTML = "";
+  search.value = "";
 });
